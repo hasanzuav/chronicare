@@ -1,0 +1,41 @@
+Heroku Cheatsheet
+
+heroku login
+- Log into Heroku services
+
+heroku ps
+- Lists which dynos are running which process types
+
+heroku ps:scale web=<DynoNum> queue=<DynoNum>
+- Scales the dynos to the numbers (warning queue is not free)
+- ex. heroku ps:scale web=1 (free)
+- ex. heroku ps:scale web=2 queue=2 (not free)
+
+heroku config
+- Lists config variables
+
+heroku config:set <VARNAME>=<var_value>
+- Sets config variables 
+- ex. heroku config:set ENCRYPTION_KEY=my_secret_launch_codes
+
+heroku releases
+- Displays audit trail of release deploys
+
+heroku releases:rollback <version number>
+- ex. heroku releases:rollback v102
+- Rolls back to previous version number of release
+
+heroku run bash
+- Creates and attach to a one-off dyno
+- Spins up new dyno, loaded with your release, and then runs the bash command
+
+heroku logs
+- Lists logs as streams of time-stamped events from all processes running in all the dynos and Heroku platform components
+
+heroku logs --ps web.1 --tail
+- open up the logs from a single dyno, and keeping the channel open listening for further events
+
+
+git add .
+git commit -m "message"
+git push heroku master
