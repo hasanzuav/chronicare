@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<style>
+/* Dropdown Button */
+.dropbtn {
+    background-color: #AAFF8A;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width:600px;
+    height:100px;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+</style>
+</head>
+<body>
+
+
+
+<div class="dropdown">
+  <button onclick="myFunctionMin()" class="dropbtn" title="Does not interfere with most activities. Able to adapt to pain">minor</button>
+  <div id="minorDropdown" class="dropdown-content">
+    <a href="#" title="very light barely noticeable pain. Most of the time you do not think of the pain">Very mild</a>
+    <a href="#" title="Minor pain, like lightly pinching the skin">Discomforting</a>
+    <a href="#" title="very noticeable pain, like an accidental cut but eventually you can adapt and ignore the pain">Tolerable</a>
+  </div>
+</div>
+
+<div class="dropdown">
+	<button onclick="myFunctionMod()" class="dropbtn" style="background-color: #FEF76B" title="Interferes with many activities. Requires lifsetyle changesbut patient remains independent.">Moderate</button>
+	<div id="modDropdown" class="dropdown-content">
+		<a href="#" title="Strong deep pain, like a toothache or bee sting. Eventually becomes dull, but always noticeable.">Distressing</a>
+		<a href="#" title="Strong, deep, piercing pain. Such as sprained ankle or mild back pain. Lifestyle may be affected.">Very Distressing</a>
+		<a href="#" title="Strong, deep, piercing pain that takes over the senses. May be difficult to maintain job or social relationships.">Intense</a>
+	</div>
+</div>
+
+<div class="dropdown">
+	<button onclick="myFunctionSev()" class="dropbtn" style="background-color: #FE916B" title="unable to engage in normal activities. Patient is disabled and unable to function independently">Severe</button>
+	<div id="sevDropdown" class="dropdown-content">
+		<a href="#" title="Similar to intense, however, your senses are completly taken over. Thinking is not clear. Many are disabled and unable to live alone.">Very Intense</a>
+		<a href="#" title="Pain so intense many undergo severe personality changes. Suicide is often contemplated and may be attempted. Comparable to childbirth or intense migraine">Utterly Horrible</a>
+		<a href="#" title="Pain so intense you can no longer stand it and demand painkillers or surgery regardless of side effects or risk. comparable to throat cancer">Excrutiating/Unbearable</a>
+		<a href="#" title="Pain so intense you will go unconcious shortly">Unimaginable/Unspeakable</a>
+
+</body>
+<script type="text/javascript">
+	/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunctionMin() {
+	document.getElementById("sevDropdown").classList.remove('show');
+	document.getElementById("modDropdown").classList.remove('show');
+    document.getElementById("minorDropdown").classList.toggle("show");
+}
+
+function myFunctionMod() {
+    document.getElementById("sevDropdown").classList.remove('show');
+	document.getElementById("minorDropdown").classList.remove('show');
+    document.getElementById("modDropdown").classList.toggle("show");
+}
+function myFunctionSev() {
+    document.getElementById("minorDropdown").classList.remove('show');
+	document.getElementById("modDropdown").classList.remove('show');
+    document.getElementById("sevDropdown").classList.toggle("show");
+}
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+</html>
